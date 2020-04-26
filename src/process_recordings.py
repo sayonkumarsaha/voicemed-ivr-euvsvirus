@@ -5,14 +5,14 @@ import os
 
 
 f = []
-for (dirpath, dirnames, filenames) in os.walk("./"):
+for (dirpath, dirnames, filenames) in os.walk("../"):
     f.extend(filenames)
     break
 print(f)
 
 app = Flask(__name__)
 
-FIREBASE_CREDENTIAL = './VoiceMedCalls.json'
+FIREBASE_CREDENTIAL = '../VoiceMedCalls.json'
 FIREBASE_BUCKET = 'voicemedcalls-78bd8.appspot.com'
 
 
