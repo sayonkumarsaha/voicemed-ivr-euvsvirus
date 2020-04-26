@@ -1,8 +1,8 @@
 {
   "type": "service_account",
   "project_id": "voicemedcalls-78bd8",
-  "private_key_id": "129ad2b693b2c2860fb8175704965a33844de339",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCvdwbNz8+yhaFY\nbC6RD6IU0vCZEfo+LGnE/fMv5F2rPPajS7JEAONtGfjsPfGdkL7GxtFMM8tcpyVG\nw6IrdeByhXG3aunmRuwTneI+dvH/nc6DCZJsGUEyE5QNhGNlC4siTejwwGeM1n8V\ngBlixgHfmX7GwQF7uJA3HSjky11w7j4y/AAjcWt+9dPXZNlBlYzAPaYWxUo7gGDN\ndQBjwGvlDs8cryoP/v1cPRE6B3w+NwRZkJtTxs9T0SDznhtNKgZkPzPogYZnu0Q9\nF4ZK7VfouEb5ezT0VB3K+Y4mr19S5+L9tvtD/XX+zqjOYybWQJB+WbcSnQnCdbbc\nhViiFYBbAgMBAAECggEANVIS171EbQgtuSya1AsvomtdoO51IKqnc60GVzHrAwvy\nGTp6EC9C7VccrVG/mDWxu78UQDdnH59NdR0jLVjTXYnOvkG3lXpM6EMsyvWjYZ3H\ncUuZ2s6r4LdRYPAvsjeZTtHlLTAS55oRIWv9iuYIELZY77YcKMgzzwPF9w0Ttqq2\nm+NTzVcY+CCNavk/WkMwTSnH/QsnLJToPs7THdCRQrIt9uJoHUt8OTVPFcYKYFb6\npQDcXvEANTdLfUx2+sfWyn8eULWUF55P1pGWZLTj/2StkVv7ZAD0OLT+bMzz5gPk\nHxch8fpMEeTaYQsds4xgvK4X5wrGKJ+UGbAzLYbQMQKBgQDV1BDyEauMgoqf2Dvh\namc7LI4yCkao/aoAuPMbIDBRaIrRr16137r3as66ohvwv+R5Qnz/kwDu5kZET+0B\n6rGctUmnBIK8CCfe5mUOEahGaOCxSZAfk54a1wzHlVqQ7AfGX9Jw9VMlDBSFm+/z\nqxcAMlsFsEH8o3ZX9VoibIL/qwKBgQDSEgmRksLDQ0ciIqRpCRSxWY6fF/2yxZWU\nNuRL2I+vSnl6v9CcgOShkvvKLAGtl06ANzMO31ECgiDp/Md38BNldNver06MMcvf\nL6p+d5V2h9XS/SjBWW5W5VUeaqxrLgr1ue5flAE3ly+l6E5wmORkFW43QPBJhll9\nSYNk37mSEQKBgHUnep1WZxpWD6OicrR/es3mDIaIMMy4JqO8sZ3EFhUUZTKblhWp\n3iNfBqMk3JAcYw65CglxPoql6gvVirKJJwUIIrF6fDKPeWDb9LQvonXpUmpwNqHG\nXFKyTpMvVm6ek2fx6jfvgb2Dj97gYCiuLazy6gIE3zKPUPDCQb8omuF/AoGAR5kw\nO7aavTS0DPVjtg0LSXstuhnSNVlUpwSigRtZtbQbfXPdJUplIpDXUsv28nSMo/Ss\naVhB4yn5D+dBESb5ZW4T9m0nx269ft9fK+WUQqb/gP8aIfRaQDG/9jMDezBhOela\nTqdCVvEno1NvUL87sMUBIMH4ZAbvf11L9FiwhhECgYEAsCvb1UgVcPBPLah5gCwp\ndlQtZm3es1v3tbWZHWAvCWHaJGtIpSfy2rQ75r7SkybCPcNl58wYmWjoerFQylRX\nlgRjrURfmS8DZFYEWu5U0tw0nGGgBtfqCNLXsvNBJpjyTGTHr3SRX3FAn0Dey0s5\n+Kgvg5Lsy9bG/jUMSXSdKH0=\n-----END PRIVATE KEY-----\n",
+  "private_key_id": ,
+  "private_key": ,
   "client_email": "voicemedcalls-78bd8@appspot.gserviceaccount.com",
   "client_id": "110474579600201206987",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
