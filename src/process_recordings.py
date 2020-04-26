@@ -131,6 +131,6 @@ def fetch_speech_recording():
 if __name__ == "__main__":
 
     storage_client = storage.Client.from_service_account_json(FIREBASE_CREDENTIAL)
-    app.run(host = 'localhost', port = 5002, debug = True)
+    # app.run(host = 'localhost', port = 5002, debug = True)
     # Threaded option to enable multiple instances for multiple user access support
-    # app.run(threaded=True, port=5002)
+    app.run(threaded=True, port=5002)
