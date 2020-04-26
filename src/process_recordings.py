@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-FIREBASE_CREDENTIAL = './voicemed_storage.json'
+FIREBASE_CREDENTIAL = './VoiceMedCalls.json'
 FIREBASE_BUCKET = 'voicemedcalls-78bd8.appspot.com'
 
 storage_client = storage.Client.from_service_account_json(FIREBASE_CREDENTIAL)
