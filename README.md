@@ -1,6 +1,6 @@
 ## VoiceMed IVR: EUvsVirus Hackathon 2020
 
-The code in this repositiory builds an end to end **Interactive Voice Reponse System (IVR)** for **[VoiceMed](https://www.voicemed.io/)** product during the 48hrs [EuVsVirus](https://euvsvirus.org/) Hackathon. [[DevPost](https://devpost.com/software/voicemed-1z3b0r) of the project]
+The code in this repository builds an end to end **Interactive Voice Response System (IVR)** for **[VoiceMed](https://www.voicemed.io/)** product during the 48hrs [EuVsVirus](https://euvsvirus.org/) Hackathon. [[DevPost](https://devpost.com/software/voicemed-1z3b0r) of the project]
 
 #### IVR Workflows
 
