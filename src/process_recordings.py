@@ -25,12 +25,12 @@ def _write_record_data(data, data_type, call_sid, rec_sid, rec_url):
     wav_filename = str(call_sid) + '/' + rec_sid + '/' + data_type + '.wav'
     blob = bucket.blob(wav_filename)
     r = requests.get(rec_url)
-    with open(wav_filename, 'wb') as f:
+    with open('temp_filename.wav', 'wb') as f:
         f.write(r.content)
-    with open(wav_filename, 'rb') as f:
+    with open('temp_filename.wav', 'rb') as f:
         blob.upload_from_file(f)
-    if os.path.exists(wav_filename):
-        os.remove(wav_filename)
+    if os.path.exists('temp_filename.wav'):
+        os.remove('temp_filename.wav')
 
 
 def _fetch_record_data(request):
