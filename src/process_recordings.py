@@ -4,12 +4,6 @@ import requests
 import os
 
 
-f = []
-for (dirpath, dirnames, filenames) in os.walk("../"):
-    f.extend(filenames)
-    break
-print(f)
-
 app = Flask(__name__)
 
 FIREBASE_CREDENTIAL = '../VoiceMedCalls.json'
@@ -23,12 +17,12 @@ def _write_record_data(data, data_type, call_sid, rec_sid, rec_url):
     bucket = storage_client.get_bucket(FIREBASE_BUCKET)
 
     # TODO: Add headers for the CSV from _fetch_record_data
-    filename = str(call_sid) + "_" + data_type + '.txt'
+    filename = str(call_sid) + '/' + data_type + '.txt'
     blob = bucket.blob(filename)
     blob.upload_from_string(data)
 
     # Downloading the recording URL and storing it on Firebase
-    wav_filename = str(call_sid) + '_' + rec_sid + "_" + data_type + '.wav'
+    wav_filename = str(call_sid) + '/' + rec_sid + '/' + data_type + '.wav'
     blob = bucket.blob(wav_filename)
     r = requests.get(rec_url)
     with open(wav_filename, 'wb') as f:
