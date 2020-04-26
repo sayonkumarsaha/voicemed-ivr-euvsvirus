@@ -8,6 +8,8 @@ app = Flask(__name__)
 FIREBASE_CREDENTIAL = './voicemed_storage.json'
 FIREBASE_BUCKET = 'voicemedcalls-78bd8.appspot.com'
 
+storage_client = storage.Client.from_service_account_json(FIREBASE_CREDENTIAL)
+
 def _write_record_data(data, data_type, call_sid, rec_sid, rec_url):
     """Writes data on Firebase storage """
 
@@ -127,8 +129,6 @@ def fetch_speech_recording():
     return "No recordings processed"
 
 
-if __name__ == "__main__":
-    storage_client = storage.Client.from_service_account_json(FIREBASE_CREDENTIAL)
-    # app.run(host = 'localhost', port = 5002, debug = True)
-    # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port=5002)
+# app.run(host = 'localhost', port = 5002, debug = True)
+# Threaded option to enable multiple instances for multiple user access support
+app.run(threaded=True, port=5002)
