@@ -1,3 +1,5 @@
+.idea
+
 # twilio keys
 src/authentication_data.py
 
