@@ -1,34 +1,34 @@
 {
-  "description": "A New Flow",
+  "description": "CollectVoiceSamples",
   "states": [
     {
       "name": "Trigger",
       "type": "InitialState",
       "properties": {
         "offset": {
-          "x": 50,
-          "y": -450
+          "x": 60,
+          "y": -430
         },
-        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC856d2420a3d37b45a1ec73f7ce21a45d/Flows/FWac25b1a484074aa61f890ab06e5a97b2"
+        "flow_url": "https://webhooks.twilio.com/v1/Accounts/AC856d2420a3d37b45a1ec73f7ce21a45d/Flows/FWa396c402ec28276a2d800876d4f241ff"
       },
       "transitions": [
         {
           "event": "incomingMessage",
           "conditions": [],
           "next": null,
-          "uuid": "7240a111-cbd9-40dc-bec7-e26c31919328"
+          "uuid": "0fe57112-c365-42f9-9a9b-dd41fecc0c61"
         },
         {
           "event": "incomingCall",
           "conditions": [],
-          "next": null,
-          "uuid": "2cb28597-2fe3-43db-bcf0-715bc450fd6f"
+          "next": "FF83eea5a926247c8da90851563644c87b",
+          "uuid": "5e161da8-5c59-434a-a7bb-cc228f28dfff"
         },
         {
           "event": "incomingRequest",
           "conditions": [],
-          "next": "FF83eea5a926247c8da90851563644c87b",
-          "uuid": "b8fa84c3-e8ff-4291-a372-4d21a01802c4"
+          "next": null,
+          "uuid": "aa6a2487-a863-4b78-8a12-bbd2613b052f"
         }
       ],
       "sid": "FF7ef77564ee11e025603712617ddccda3"
@@ -39,16 +39,16 @@
       "properties": {
         "offset": {
           "x": 410,
-          "y": 640
+          "y": 630
         },
         "timeout": 4,
         "finish_on_key": "#",
         "stop_gather": false,
         "number_of_digits": null,
         "save_response_as": null,
-        "say": "Do I have your consent to record your voice? Please respond with either \"Yes\", or \"No\".",
+        "say": "Do I have your consent to record your voice? Please respond with either \"Yes I give my consent\", or \"No I refuse to give my consent\", alternatively press ONE for \"Yes I give my consent\" or press TWO for \"No I refuse to give my consent\".",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "hints": null,
@@ -61,20 +61,20 @@
         {
           "event": "keypress",
           "conditions": [],
-          "next": null,
-          "uuid": "413aaf2d-bece-4619-9ee9-d970f608bfc7"
+          "next": "FF05f5a4abe2cd5dc82e5a7e568ed8b5f3",
+          "uuid": "176f1d08-a4c4-4845-941f-9bcbafe6ae87"
         },
         {
           "event": "speech",
           "conditions": [],
           "next": "FFe9c30fd9cf9ae888ceeb6a6115cda106",
-          "uuid": "0140b2ab-55cc-4c75-89ca-8bbbd2b3bc07"
+          "uuid": "46204f1a-56a3-4598-9429-1a2a975f7532"
         },
         {
           "event": "timeout",
           "conditions": [],
           "next": "FF1f0e92306245dc6ad9d1f5536246b39a",
-          "uuid": "3574f2f5-d030-46a1-a32e-9bb975059422"
+          "uuid": "ea6c90f8-ef88-429c-a653-b57bae31b400"
         }
       ],
       "sid": "FF9c2ef0ddb22da784ce1d1ca83c14222f"
@@ -84,8 +84,8 @@
       "type": "Branch",
       "properties": {
         "offset": {
-          "x": 360,
-          "y": 930
+          "x": 610,
+          "y": 910
         },
         "input": "{{widgets.gather_consent_input.SpeechResult}}"
       },
@@ -94,7 +94,7 @@
           "event": "noMatch",
           "conditions": [],
           "next": "FF1f0e92306245dc6ad9d1f5536246b39a",
-          "uuid": "04cc5699-4d14-45ba-a3a8-e5342789b3d1"
+          "uuid": "1d988e6f-45e2-49a4-94c3-0468f50241f5"
         },
         {
           "event": "match",
@@ -109,13 +109,13 @@
             }
           ],
           "next": "FF430a8a0c9edd38bdbe48db286bd6fd48",
-          "uuid": "49c2f49c-954c-4570-b26d-1051d6017310"
+          "uuid": "6b59d76f-2911-48f1-a607-282f25787b37"
         },
         {
           "event": "match",
           "conditions": [
             {
-              "friendly_name": "If value contains no",
+              "friendly_name": "If no",
               "type": "contains",
               "arguments": [
                 "{{widgets.gather_consent_input.SpeechResult}}"
@@ -124,7 +124,7 @@
             }
           ],
           "next": "FF91bbeaa09f9464eecdc5907be3d2c50b",
-          "uuid": "0b731d54-b389-4443-91d8-0756223da5cf"
+          "uuid": "c5dba596-6042-4aee-82fb-be758cdc6b35"
         }
       ],
       "sid": "FFe9c30fd9cf9ae888ceeb6a6115cda106"
@@ -139,7 +139,7 @@
         },
         "say": "Sorry,I did not get a valid response. Please try again.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -149,7 +149,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FF9c2ef0ddb22da784ce1d1ca83c14222f",
-          "uuid": "bae3358f-fd21-4f7a-9560-969742215b55"
+          "uuid": "ef61d88f-c694-4f9c-9414-a4424d3dd61a"
         }
       ],
       "sid": "FF1f0e92306245dc6ad9d1f5536246b39a"
@@ -162,9 +162,9 @@
           "x": 190,
           "y": -50
         },
-        "say": "Hello. I am Voice Med.",
+        "say": "Hello, I am Voice Med. Your voice recording service. Thank you for calling, your contribution will help train our A.I. in distinguishing many different voice patterns.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -174,7 +174,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FFef0aa65dc460bfe3db55ea690cdb0c85",
-          "uuid": "19d52ad5-4f1d-42ca-b56f-5553e1b2e091"
+          "uuid": "b44c009b-9bfa-42b6-a733-1f77bdad1957"
         }
       ],
       "sid": "FF83eea5a926247c8da90851563644c87b"
@@ -187,9 +187,9 @@
           "x": -420,
           "y": 580
         },
-        "say": "Unfortunately, I cannot proceed without your consent. Please stay healthy and follow your local Public Health recommendations. Bye!",
+        "say": "Unfortunately, I cannot proceed without your consent. Please stay healthy and follow your local Public Health recommendations.  Bye!",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -199,7 +199,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": null,
-          "uuid": "3d4b5dd4-7c9f-4a0f-ada9-71d630d7e7b7"
+          "uuid": "3fd65137-2637-4348-9051-764483f2fbe4"
         }
       ],
       "sid": "FF91bbeaa09f9464eecdc5907be3d2c50b"
@@ -212,14 +212,14 @@
           "x": 420,
           "y": 2070
         },
-        "timeout": 6,
+        "timeout": 5,
         "finish_on_key": "#",
         "stop_gather": false,
         "number_of_digits": null,
         "save_response_as": null,
         "say": "Ok. Now I would like you to locate in a quiet area. Please say 'Yes' when you’re in a quiet environment.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "hints": "yes,no",
@@ -233,19 +233,19 @@
           "event": "keypress",
           "conditions": [],
           "next": null,
-          "uuid": "6e1fffda-5158-4394-a0e2-8b543bc8c5a7"
+          "uuid": "efeca6e5-20d2-4d9c-b52c-ad06aee81eb6"
         },
         {
           "event": "speech",
           "conditions": [],
           "next": "FF15431c8bd9fea8da5dee4f748263917c",
-          "uuid": "78f840c1-9b68-4404-829f-8fef10f61350"
+          "uuid": "891a6123-2ff7-42f1-821f-eb2d46137a92"
         },
         {
           "event": "timeout",
           "conditions": [],
           "next": "FF409ab3c95aad09a8f7b4fce0666b98a7",
-          "uuid": "032ee315-cda9-481e-9035-196c54a55d07"
+          "uuid": "cb32331e-3266-4e4a-82ae-05eaad3da38c"
         }
       ],
       "sid": "FFfe3c75f55ecb1bba3b9d75a8e4fd6854"
@@ -265,7 +265,7 @@
           "event": "noMatch",
           "conditions": [],
           "next": "FF409ab3c95aad09a8f7b4fce0666b98a7",
-          "uuid": "0cccc4ad-2484-4ece-bca3-ab7af173262c"
+          "uuid": "a05213ad-1cf5-47d1-bc9f-ed8a6ffce1fa"
         },
         {
           "event": "match",
@@ -280,7 +280,7 @@
             }
           ],
           "next": "FFaa686c5480364d6b74e6333509bca367",
-          "uuid": "d0a95eac-4305-4861-9cc3-3acbe314890f"
+          "uuid": "9dd37803-bf44-43e6-85d7-e523d1e3bbf3"
         },
         {
           "event": "match",
@@ -295,7 +295,7 @@
             }
           ],
           "next": "FFb6549e24f06579e7885fc3e3174917e6",
-          "uuid": "cb1b7671-6583-48a5-a02a-fd4c96629d6a"
+          "uuid": "7de4c7c1-8aee-4b5d-9fba-4a2b940ff006"
         }
       ],
       "sid": "FF15431c8bd9fea8da5dee4f748263917c"
@@ -309,7 +309,7 @@
           "y": 170
         },
         "record_call": true,
-        "recording_status_callback": null,
+        "recording_status_callback": "https://voice-med.herokuapp.com/fetch-consent-recording",
         "recording_status_callback_method": "POST",
         "recording_status_callback_events": "completed",
         "recording_channels": "dual",
@@ -320,13 +320,13 @@
           "event": "success",
           "conditions": [],
           "next": "FF81891200570c846f7a50cc021dbd3a3e",
-          "uuid": "d259182a-ea92-4d4e-a353-4dfdaac435d4"
+          "uuid": "290215b7-3787-43a3-aefa-b3f31cec49ca"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "70354498-9566-4f18-8dd8-1241495196dd"
+          "uuid": "bc9f68ef-da9a-4cca-ac56-f2d0d99c84f4"
         }
       ],
       "sid": "FFef0aa65dc460bfe3db55ea690cdb0c85"
@@ -341,7 +341,7 @@
         },
         "say": "Thank you!",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -351,7 +351,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FF0408e699529e28383abdd403030f6718",
-          "uuid": "4293ab0c-4efd-4d8a-9412-830ec538297f"
+          "uuid": "48b83f4b-5f82-457c-ae3d-f2dfd8a9d58b"
         }
       ],
       "sid": "FF430a8a0c9edd38bdbe48db286bd6fd48"
@@ -376,13 +376,13 @@
           "event": "success",
           "conditions": [],
           "next": "FFfe3c75f55ecb1bba3b9d75a8e4fd6854",
-          "uuid": "5e74df39-ce3c-49d3-9047-bcaf8bc6d017"
+          "uuid": "300a518e-6fc1-47b2-a9cb-f5e62d5e24de"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "2722acd8-9f5d-444c-8fe9-bb7cc903a90b"
+          "uuid": "fb7773be-97fb-47fa-8502-6eb294509852"
         }
       ],
       "sid": "FF0408e699529e28383abdd403030f6718"
@@ -397,7 +397,7 @@
         },
         "say": "Sorry,I did not get a valid response. Please try again.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -407,7 +407,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FFfe3c75f55ecb1bba3b9d75a8e4fd6854",
-          "uuid": "f0c1af10-53ac-4aaf-afe5-c49d4780212e"
+          "uuid": "e9a49348-648c-48bc-a91f-36a5c18664a6"
         }
       ],
       "sid": "FF409ab3c95aad09a8f7b4fce0666b98a7"
@@ -420,9 +420,9 @@
           "x": 690,
           "y": 2730
         },
-        "say": "Ok. First, help me understand if you have been affected by Covid19.",
+        "say": "Ok. First, help me understand if you have been affected by Covid 19.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -432,7 +432,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FFe486f57f7c933a4ad17fdaac35ae225e",
-          "uuid": "3e33b87a-fa7f-416e-8efa-566280a62dad"
+          "uuid": "c20e7c44-87f9-4494-9f56-ac1b6055982b"
         }
       ],
       "sid": "FFaa686c5480364d6b74e6333509bca367"
@@ -447,7 +447,7 @@
         },
         "say": "Unfortunately, I cannot proceed: try again when you are in a  quiet environment. Please stay healthy and follow your local Public Health recommendations. Bye!",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -457,7 +457,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": null,
-          "uuid": "962ad5bf-fe7f-4c99-886f-7a482612cea6"
+          "uuid": "a1b5b70f-8a80-42c4-aa86-dfa15706a1ef"
         }
       ],
       "sid": "FFb6549e24f06579e7885fc3e3174917e6"
@@ -470,9 +470,9 @@
           "x": 550,
           "y": 400
         },
-        "say": "Before we start, I need your consent to record and process the information you are going to provide during this call, such as a cough sample and health condition. Our recordings and data collections are anonymous. Your phone number will not be used or associated with your voice samples.",
+        "say": "Before we start, I need your consent to process the information you are going to provide during this call, such as a cough and breathing samples. Our recordings and data collections are anonymous. Your phone number will not be used or associated with your voice samples. For more information please visit the Privacy Policy section on our official website at “VoiceMed dot io”.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -482,7 +482,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FF9c2ef0ddb22da784ce1d1ca83c14222f",
-          "uuid": "c9c79bb4-d1c5-4ee5-aa24-9d35d5918595"
+          "uuid": "6babcf4e-6c09-400b-9e43-7e31a6954334"
         }
       ],
       "sid": "FF81891200570c846f7a50cc021dbd3a3e"
@@ -496,7 +496,7 @@
           "y": 3460
         },
         "record_call": true,
-        "recording_status_callback": null,
+        "recording_status_callback": "https://voice-med.herokuapp.com/fetch-health-recording",
         "recording_status_callback_method": "POST",
         "recording_status_callback_events": "completed",
         "recording_channels": "dual",
@@ -507,13 +507,13 @@
           "event": "success",
           "conditions": [],
           "next": "FFb2b474b3155fc5142a25a26483b37df8",
-          "uuid": "fb44e156-27b5-4460-a8b1-e579dc1f100c"
+          "uuid": "872093e1-8e5a-4956-944a-5d80a34d1f45"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "d3edca3b-a362-4e84-9d42-75ea9c725b54"
+          "uuid": "ad90229f-675c-4627-8a7c-b362999ed28a"
         }
       ],
       "sid": "FFe486f57f7c933a4ad17fdaac35ae225e"
@@ -533,7 +533,7 @@
         "save_response_as": null,
         "say": "If you are healthy, say 'Healthy'.\nIf you suspect you might have Covid19, say 'Suspect'.\nIf you have been diagnosed with Covid19, say 'Infected'.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "hints": "healthy,suspect,infected",
@@ -547,19 +547,19 @@
           "event": "keypress",
           "conditions": [],
           "next": null,
-          "uuid": "b65c7004-87f4-4fd9-9f84-2b7e91e4913a"
+          "uuid": "5cbac340-5d8f-4ee7-b213-ca2dd7d1a29b"
         },
         {
           "event": "speech",
           "conditions": [],
           "next": "FF9308b617d49a8e4c2a5f9dc93e70a531",
-          "uuid": "50a4ecc6-b39f-4dab-a239-a7bb190baf1a"
+          "uuid": "31b9606c-a166-4661-8fc2-df95217f61d3"
         },
         {
           "event": "timeout",
           "conditions": [],
           "next": "FFe02d471c3d3e8e441c985610ed5cedf9",
-          "uuid": "66e091a6-72b2-4dc0-ac7d-f6445f147c85"
+          "uuid": "d2104937-89df-48dc-8b17-b71c87d0a989"
         }
       ],
       "sid": "FFb2b474b3155fc5142a25a26483b37df8"
@@ -579,13 +579,13 @@
           "event": "noMatch",
           "conditions": [],
           "next": "FFe02d471c3d3e8e441c985610ed5cedf9",
-          "uuid": "b97f546f-fb7c-457f-ab09-17f2d655ebac"
+          "uuid": "850895ee-e406-449e-9763-b5f0120af55c"
         },
         {
           "event": "match",
           "conditions": [
             {
-              "friendly_name": "If value contains healthy",
+              "friendly_name": "If contains healthy",
               "type": "contains",
               "arguments": [
                 "{{widgets.gather_health_status.SpeechResult}}"
@@ -594,13 +594,13 @@
             }
           ],
           "next": "FF0b45a0dd39b83e6343d195d9c04ae30d",
-          "uuid": "29a9f1cc-252d-4f9b-a3ba-f84711be2b81"
+          "uuid": "d12d47ae-2e6e-496f-9692-aeb13ca33747"
         },
         {
           "event": "match",
           "conditions": [
             {
-              "friendly_name": "If value equal_to infected",
+              "friendly_name": "If contains suspect",
               "type": "contains",
               "arguments": [
                 "{{widgets.gather_health_status.SpeechResult}}"
@@ -609,14 +609,14 @@
             }
           ],
           "next": "FF0b45a0dd39b83e6343d195d9c04ae30d",
-          "uuid": "83c24a62-4057-415c-b2e1-8e6b4b963550"
+          "uuid": "5cc67f06-f05c-4b07-9778-03ca8142b9f5"
         },
         {
           "event": "match",
           "conditions": [
             {
-              "friendly_name": "If value equal_to infected",
-              "type": "equal_to",
+              "friendly_name": "If contains infected",
+              "type": "contains",
               "arguments": [
                 "{{widgets.gather_health_status.SpeechResult}}"
               ],
@@ -624,7 +624,7 @@
             }
           ],
           "next": "FF0b45a0dd39b83e6343d195d9c04ae30d",
-          "uuid": "8c714f59-d75e-4168-a1df-517c1c50b79f"
+          "uuid": "940f3c4b-bf9c-43c6-8313-50798dc65cc7"
         }
       ],
       "sid": "FF9308b617d49a8e4c2a5f9dc93e70a531"
@@ -639,7 +639,7 @@
         },
         "say": "Sorry,I did not get a valid response. Please try again.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -649,7 +649,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FFb2b474b3155fc5142a25a26483b37df8",
-          "uuid": "84d08724-a782-4da9-a494-cb9c81d7af9a"
+          "uuid": "ed6ce9f4-51f8-4bdc-ac80-8cee0c08884b"
         }
       ],
       "sid": "FFe02d471c3d3e8e441c985610ed5cedf9"
@@ -664,7 +664,7 @@
         },
         "say": "Ok. Now let’s record your cough. Make sure your upper torso is in an upright position.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -674,7 +674,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FFecddea2b94e040dee7c764c3ca3cef99",
-          "uuid": "ecd8802c-605d-4c7d-a91d-aa846655c693"
+          "uuid": "2b118d09-aad5-4938-82de-a2757ad98a2b"
         }
       ],
       "sid": "FF015d535fea8411304d0f4c2d80246200"
@@ -684,7 +684,7 @@
       "type": "ToggleCallRecording",
       "properties": {
         "offset": {
-          "x": 1240,
+          "x": 1200,
           "y": 4270
         },
         "record_call": false,
@@ -699,13 +699,13 @@
           "event": "success",
           "conditions": [],
           "next": "FF015d535fea8411304d0f4c2d80246200",
-          "uuid": "3c224efe-5f30-4ace-826b-24c2a2a16b28"
+          "uuid": "c5a83ff7-7d21-4e3a-9c52-30fa695cb953"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "80255712-6cdb-44ba-9dec-761031f24dbc"
+          "uuid": "faea495e-849f-4754-b19e-932ebd84a9b6"
         }
       ],
       "sid": "FF0b45a0dd39b83e6343d195d9c04ae30d"
@@ -719,7 +719,7 @@
           "y": 5310
         },
         "record_call": true,
-        "recording_status_callback": null,
+        "recording_status_callback": "https://voice-med.herokuapp.com/fetch-cough-recording",
         "recording_status_callback_method": "POST",
         "recording_status_callback_events": "completed",
         "recording_channels": "dual",
@@ -730,13 +730,13 @@
           "event": "success",
           "conditions": [],
           "next": "FF3ce5599bb9d32a500e1815b31fc5b55d",
-          "uuid": "042bd1ae-57b1-4b88-bc34-197d5cd44d9a"
+          "uuid": "4b2fd5af-5a5d-4fde-a384-88833d7c12aa"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "920e9b94-698e-46c7-ab8f-7883707a2bc1"
+          "uuid": "6fa939f0-eadf-4dd8-8106-1f46decbf189"
         }
       ],
       "sid": "FFecddea2b94e040dee7c764c3ca3cef99"
@@ -749,14 +749,14 @@
           "x": 1310,
           "y": 5600
         },
-        "timeout": 4,
+        "timeout": 6,
         "finish_on_key": "#",
         "stop_gather": false,
         "number_of_digits": null,
         "save_response_as": null,
         "say": "Please cough 3 times and press ONE when you finish.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "hints": null,
@@ -770,19 +770,19 @@
           "event": "keypress",
           "conditions": [],
           "next": "FFb8dc8dad574ec9da2b5e6b208a2eb57f",
-          "uuid": "6c0fd74c-705c-4c9b-922b-c336199e196a"
+          "uuid": "ef6e9f01-c2e1-4926-a808-62eab9889753"
         },
         {
           "event": "speech",
           "conditions": [],
           "next": null,
-          "uuid": "984c4a6f-4991-40fb-8a21-02c1c683d8d0"
+          "uuid": "f3d3cda2-4f49-46a8-93bc-95fc4e055840"
         },
         {
           "event": "timeout",
           "conditions": [],
           "next": "FF313e8a88e5ac93fe66fc7202a33d00e6",
-          "uuid": "aae9f824-898f-4f86-b3e9-ebb87bf305e4"
+          "uuid": "f0372f1a-bf1b-494b-949f-e74e950a0566"
         }
       ],
       "sid": "FF3ce5599bb9d32a500e1815b31fc5b55d"
@@ -797,7 +797,7 @@
         },
         "say": "Sorry,I did not get anything. Please try again.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -807,7 +807,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FF3ce5599bb9d32a500e1815b31fc5b55d",
-          "uuid": "166bced1-97d8-4c17-b242-60369c18829e"
+          "uuid": "89b252f3-9c15-427e-81bf-d7fc5759351d"
         }
       ],
       "sid": "FF313e8a88e5ac93fe66fc7202a33d00e6"
@@ -827,13 +827,13 @@
           "event": "noMatch",
           "conditions": [],
           "next": "FF313e8a88e5ac93fe66fc7202a33d00e6",
-          "uuid": "e7127bbe-94d3-4e42-972d-2ce0215555d5"
+          "uuid": "7d5938b7-e3b9-4827-90b6-033bc31cb9d5"
         },
         {
           "event": "match",
           "conditions": [
             {
-              "friendly_name": "If value equal_to 1",
+              "friendly_name": "If 1",
               "type": "equal_to",
               "arguments": [
                 "{{widgets.gather_cough.Digits}}"
@@ -842,7 +842,7 @@
             }
           ],
           "next": "FFce1ba25ffccd67a0530c8b2978900084",
-          "uuid": "995e0971-b223-465b-aa75-93805f788960"
+          "uuid": "6d3106ee-9d23-4fa8-a879-1d259e141c0c"
         }
       ],
       "sid": "FFb8dc8dad574ec9da2b5e6b208a2eb57f"
@@ -867,13 +867,13 @@
           "event": "success",
           "conditions": [],
           "next": "FF19bbf9601f60443c133ac7adc48414a1",
-          "uuid": "50f63475-dad7-4d23-b311-ad741d6481e4"
+          "uuid": "90b7c60b-9132-4c87-81c9-9c2601c49f53"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "4d3f4bfa-da8b-4be7-ad9f-de68080b93b4"
+          "uuid": "2758ff56-355e-4331-9bd0-8f2d943803f8"
         }
       ],
       "sid": "FFce1ba25ffccd67a0530c8b2978900084"
@@ -888,7 +888,7 @@
         },
         "say": "Ok. Now you are going to repeat a sentence.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -898,7 +898,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FF0f90126431a892ba42cbba3c93ced366",
-          "uuid": "d135e412-491b-4c29-be49-a177ca8c967b"
+          "uuid": "08081cc4-13c0-4998-8f18-fa2fc1ed285c"
         }
       ],
       "sid": "FF415ed49de1f6d3000e0814b9f7e11c0e"
@@ -913,7 +913,7 @@
         },
         "say": "Very good. Now perform 1 complete inhale and exhale cycle through the mouth, so that your lungs are completely filled with air on each inhale and emptied on each exhale.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -923,7 +923,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FFd87723e2d05b5ec817032106d8c96a7b",
-          "uuid": "fb34e247-2c16-49fc-bf64-06400e148f55"
+          "uuid": "278e822b-c5c4-4648-a6dc-87007992e3d4"
         }
       ],
       "sid": "FF19bbf9601f60443c133ac7adc48414a1"
@@ -937,7 +937,7 @@
           "y": 7330
         },
         "record_call": true,
-        "recording_status_callback": null,
+        "recording_status_callback": "https://voice-med.herokuapp.com/fetch-breath-recording",
         "recording_status_callback_method": "POST",
         "recording_status_callback_events": "completed",
         "recording_channels": "dual",
@@ -948,13 +948,13 @@
           "event": "success",
           "conditions": [],
           "next": "FF5501d6c6ef2364e27c1299b0d7085f1e",
-          "uuid": "498a59e5-d22f-4b63-ad1b-cad872452133"
+          "uuid": "93d39d39-7315-462e-87f6-16b213ae16ae"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "09e9a754-9727-45c7-99a3-cc95b1aea538"
+          "uuid": "cbbb329e-9533-434f-a1b3-bac0ddd1d760"
         }
       ],
       "sid": "FFd87723e2d05b5ec817032106d8c96a7b"
@@ -967,14 +967,14 @@
           "x": 1580,
           "y": 7620
         },
-        "timeout": 6,
+        "timeout": 7,
         "finish_on_key": "#",
         "stop_gather": false,
         "number_of_digits": null,
         "save_response_as": null,
         "say": "Please inhale and exhale through the mouth now and press ONE when you finish.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "hints": null,
@@ -988,19 +988,19 @@
           "event": "keypress",
           "conditions": [],
           "next": "FF472401ed340cff4bf407bfb69710baa3",
-          "uuid": "08ae5b3e-e5de-4b52-b673-7301eb543e31"
+          "uuid": "7704670c-c2e1-456e-a0a9-f4d4e39587a5"
         },
         {
           "event": "speech",
           "conditions": [],
           "next": null,
-          "uuid": "04d93f94-4faf-46ad-8c9d-bdd415b97fb1"
+          "uuid": "0e35fa28-3950-4d86-9c3c-7f2329851ead"
         },
         {
           "event": "timeout",
           "conditions": [],
           "next": "FFa9b22041708d864f5efb7d481c352362",
-          "uuid": "291d4a22-f24d-4782-9ba5-d040b8449712"
+          "uuid": "78e1e6af-2125-4f0c-b026-cebb7ff9ccee"
         }
       ],
       "sid": "FF5501d6c6ef2364e27c1299b0d7085f1e"
@@ -1015,7 +1015,7 @@
         },
         "say": "Sorry,I did not get anything. Please try again.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -1025,7 +1025,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FF5501d6c6ef2364e27c1299b0d7085f1e",
-          "uuid": "cea0533a-69cf-4ba6-ba76-3ca85883eab2"
+          "uuid": "1d9c884e-e72a-4194-945c-ea7d4e648bc6"
         }
       ],
       "sid": "FFa9b22041708d864f5efb7d481c352362"
@@ -1045,7 +1045,7 @@
           "event": "noMatch",
           "conditions": [],
           "next": "FFa9b22041708d864f5efb7d481c352362",
-          "uuid": "6e2d7460-b596-4164-a460-5492fd4a83e6"
+          "uuid": "38d16d52-e370-4ad4-83d8-8967dc79436f"
         },
         {
           "event": "match",
@@ -1060,7 +1060,7 @@
             }
           ],
           "next": "FF4605547f5d1d04179d20cbaf2b9bbc05",
-          "uuid": "4dd9374f-34f7-472c-9122-fcd2110abc52"
+          "uuid": "84daa541-e805-4b81-a7a0-ab8d1d644503"
         }
       ],
       "sid": "FF472401ed340cff4bf407bfb69710baa3"
@@ -1085,13 +1085,13 @@
           "event": "success",
           "conditions": [],
           "next": "FF415ed49de1f6d3000e0814b9f7e11c0e",
-          "uuid": "c641e3ee-fcb0-43ba-ae9b-3926c34b3e84"
+          "uuid": "17dfb7db-7343-4e78-952c-5b953cee22dc"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "4303d37e-b231-4138-8341-a001106702a4"
+          "uuid": "6f2c32df-9979-438f-9140-abc1bf6e9fe5"
         }
       ],
       "sid": "FF4605547f5d1d04179d20cbaf2b9bbc05"
@@ -1104,14 +1104,14 @@
           "x": 1850,
           "y": 9450
         },
-        "timeout": 5,
+        "timeout": 6,
         "finish_on_key": "#",
         "stop_gather": false,
         "number_of_digits": null,
         "save_response_as": null,
         "say": "Please repeat after me: “The quick, brown, fox, jumps over, the lazy dog”.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "hints": null,
@@ -1125,19 +1125,19 @@
           "event": "keypress",
           "conditions": [],
           "next": null,
-          "uuid": "39d81390-d5b1-4375-a31a-a851fdee23f1"
+          "uuid": "3ebec799-b7c6-4346-bcfb-03c786e03307"
         },
         {
           "event": "speech",
           "conditions": [],
           "next": "FFce3645a78132531c87433646b9668a19",
-          "uuid": "fb47a8bd-39ce-418c-b062-83bcb0a01311"
+          "uuid": "137655e1-cdfd-45f7-8abb-d0b3bd53d28f"
         },
         {
           "event": "timeout",
           "conditions": [],
           "next": "FF8cde170f4210211dffdc6485c347af2b",
-          "uuid": "b76fd89c-b1fb-413c-87a1-e0cf21ef4c90"
+          "uuid": "cbe878a4-290c-48ec-8292-4a13da458e87"
         }
       ],
       "sid": "FF867b1f9596a68d3ea7d36cacb24a6919"
@@ -1151,7 +1151,7 @@
           "y": 9200
         },
         "record_call": true,
-        "recording_status_callback": null,
+        "recording_status_callback": "https://voice-med.herokuapp.com/fetch-speech-recording",
         "recording_status_callback_method": "POST",
         "recording_status_callback_events": "completed",
         "recording_channels": "dual",
@@ -1162,19 +1162,19 @@
           "event": "success",
           "conditions": [],
           "next": "FF867b1f9596a68d3ea7d36cacb24a6919",
-          "uuid": "edfc8989-3b25-43b7-a0cd-7003d2a20bcc"
+          "uuid": "c62e50e1-fcd1-4bfc-b2dd-44e5bc4ed689"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "a07f2006-0444-4036-8088-59c94782df16"
+          "uuid": "b3e8ed46-0f44-44b1-9278-e851811444d9"
         }
       ],
       "sid": "FF0f90126431a892ba42cbba3c93ced366"
     },
     {
-      "name": "Copy_of_say_inhale_exhale_no_input",
+      "name": "say_repeat_after_me_no_input",
       "type": "SayPlay",
       "properties": {
         "offset": {
@@ -1183,7 +1183,7 @@
         },
         "say": "Sorry,I did not get anything. Please try again.",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -1193,7 +1193,7 @@
           "event": "audioComplete",
           "conditions": [],
           "next": "FF867b1f9596a68d3ea7d36cacb24a6919",
-          "uuid": "986323ee-d3a7-4d7f-953a-1679f6c0067c"
+          "uuid": "809cadae-3666-4640-8353-0d33597ed6c3"
         }
       ],
       "sid": "FF8cde170f4210211dffdc6485c347af2b"
@@ -1213,7 +1213,7 @@
           "event": "noMatch",
           "conditions": [],
           "next": "FF5fbc019bdc73ec996b2b6518836d124a",
-          "uuid": "4b54e09a-1ae4-4b10-9737-0434fd4c883c"
+          "uuid": "b10f36af-7a04-4e1d-ba3c-5c91f6b72632"
         }
       ],
       "sid": "FFce3645a78132531c87433646b9668a19"
@@ -1238,13 +1238,13 @@
           "event": "success",
           "conditions": [],
           "next": "FFa482b6f4f8a15eff9bb46cf28fd900b6",
-          "uuid": "27fe7a23-b803-4490-8c75-9bbdf9f8dafd"
+          "uuid": "28c9fcbe-708f-4c4e-9388-69615b350d13"
         },
         {
           "event": "failed",
           "conditions": [],
           "next": null,
-          "uuid": "2fbdf8a1-e303-40e5-958f-2aae6f308e24"
+          "uuid": "dc30b226-91e7-44ce-9d15-265aa4d55408"
         }
       ],
       "sid": "FF5fbc019bdc73ec996b2b6518836d124a"
@@ -1259,7 +1259,7 @@
         },
         "say": "Well done, you have completed all the steps required! Thank you for contributing, your voice will help millions of people affected by Covid19. Take care of yourself and follow your local Public Health recommendations. Bye!",
         "play": null,
-        "voice": "woman",
+        "voice": "alice",
         "language": "en-US",
         "loop": 1,
         "digits": null
@@ -1269,10 +1269,60 @@
           "event": "audioComplete",
           "conditions": [],
           "next": null,
-          "uuid": "01333a3b-ba1b-49ca-a82a-57eb31e4844e"
+          "uuid": "5e38e1fd-f115-43ff-b9e7-5b930c786704"
         }
       ],
       "sid": "FFa482b6f4f8a15eff9bb46cf28fd900b6"
+    },
+    {
+      "name": "split_consent_on_key",
+      "type": "Branch",
+      "properties": {
+        "offset": {
+          "x": 260,
+          "y": 910
+        },
+        "input": "{{widgets.gather_consent_input.Digits}}"
+      },
+      "transitions": [
+        {
+          "event": "noMatch",
+          "conditions": [],
+          "next": "FF1f0e92306245dc6ad9d1f5536246b39a",
+          "uuid": "5cabd7e9-690f-453e-b20a-600c0a6b2843"
+        },
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If 1",
+              "type": "equal_to",
+              "arguments": [
+                "{{widgets.gather_consent_input.Digits}}"
+              ],
+              "value": "1"
+            }
+          ],
+          "next": "FF430a8a0c9edd38bdbe48db286bd6fd48",
+          "uuid": "142d722e-1fb9-4539-a4b0-a28fb84624c7"
+        },
+        {
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If 2",
+              "type": "equal_to",
+              "arguments": [
+                "{{widgets.gather_consent_input.Digits}}"
+              ],
+              "value": "2"
+            }
+          ],
+          "next": "FF91bbeaa09f9464eecdc5907be3d2c50b",
+          "uuid": "c662f3be-46e3-4c41-9d46-4300440a6b70"
+        }
+      ],
+      "sid": "FF05f5a4abe2cd5dc82e5a7e568ed8b5f3"
     }
   ]
 }
